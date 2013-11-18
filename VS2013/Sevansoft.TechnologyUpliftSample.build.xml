@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" ?>
+<project name="Sevansoft.TechnologyUpliftSample" xmlns="http://nant.sf.net/schemas/nant.xsd">
+  <property name="build.dir"			        value="${directory::get-current-directory()}" />
+  <property name="built.dir"			        value="${build.dir}\built" />
+  <property name="buildtools.dir" 		    value="${environment::get-variable('BUILD_TOOLS')}" />
+  <property name="tests.dir"			        value="${build.dir}\tests" />
+
+  <property name="nunit.dir" 			        value="${buildtools.dir}\NUnit" />
+  <property name="ncover.dir" 			      value="${buildtools.dir}\ncover" />
+  <property name="ncover.explorer.dir" 		value="${buildtools.dir}\nCoverExplorer" />
+
+  <property name="reference.dir" 			    value="${build.dir}\References" />
+
+  <property name="debug"				          value="" overwrite="false" />
+
+  <property name="verbose"			          value="" overwrite="false" />
+
+  <property name="CCNetLabel" 			      value="0.0.0.0" overwrite="false" />
+  
+  <property name="nant.onfailure" 		    value="Failure"/>
+  <property name="nant.onsuccess" 		    value="Success"/>
+
+  <property name="nant.settings.currentframework"   value="net-3.5" />
+
+  <tstamp verbose="${verbose}">
+    <formatter property="year" pattern="yyyy" />
+  </tstamp>
+
+  <target name="Clean">
+    <echo message="Task execution started at : ${sevansoft-buildtime::get-time-formatted()}" />
+
+    <delete failonerror="true" 
+            verbose="${verbose}" >
+      <fileset basedir="${build.dir}">
+        <include name="**/*.*" />
+      </fileset>
+    </delete>
+    
+    <echo message="Task execution finished at : ${sevansoft-buildtime::get-time-formatted()}" />
+  </target>
+
+  <target name="MakeWriteable">
+    <echo message="Task execution started at : ${sevansoft-buildtime::get-time-formatted()}" />
+
+    <mkdir dir="${built.dir}" 
+           failonerror="true" 
+           verbose="${verbose}" />
+    <mkdir dir="${tests.dir}" 
+           failonerror="true" 
+           verbose="${verbose}" />
+
+    <attrib normal="true" 
+            failonerror="true" 
+            verbose="${verbose}">
+      <fileset basedir="${build.dir}">
+        <include name="**/*.*" />
+      </fileset>
+    </attrib>
+
+    <call target="Touch"/>
+    
+    <echo message="Task execution finished at : ${sevansoft-buildtime::get-time-formatted()}" />
+  </target>
+  
+  <target name="TidyVersion" depends="MakeWriteable">
+    <echo message="Task execution started at : ${sevansoft-buildtime::get-time-formatted()}" />
+
+    <if test="${CCNetLabel != '0.0.0.0'}">
+      <property name="version" value="${string::replace(CCNetLabel, 'Cruise Control Build ', '')}" />
+    </if>
+
+    <if test="${CCNetLabel == '0.0.0.0'}">
+      <property name="version" value="${CCNetLabel}" />
+    </if>
+
+    <echo message="Task execution finished at : ${sevansoft-buildtime::get-time-formatted()}" />
+  </target>
+
+  <target name="UpdateVersion" depends="TidyVersion">
+    <echo message="Task execution started at : ${sevansoft-buildtime::get-time-formatted()}" />
+
+    <property name="company.name" 		  value="Sevansoft" />
+    <property name="product.name" 		  value="Sevansoft.Extensions" />
+    <property name="copyright.notice" 	value="Copyright © 2000-${year} Sevansoft" />
+    <asminfo output="${build.dir}\VersionInfo.vb" 
+             language="VB" 
+             failonerror="true"
+             verbose="${verbose}">
+      <imports>
+        <import namespace="System" />
+        <import namespace="System.Reflection" />
+      </imports>
+      <attributes>
+        <attribute type="AssemblyVersionAttribute" 			          value="${version}" />
+        <attribute type="AssemblyFileVersionAttribute" 			      value="${version}" />
+        <attribute type="AssemblyCompanyAttribute" 			          value="${company.name}" />
+        <attribute type="AssemblyProductAttribute" 			          value="${product.name}" />
+        <attribute type="AssemblyCopyrightAttribute" 			        value="${copyright.notice}" />
+        <attribute type="AssemblyConfigurationAttribute" 		      value="RELEASE" />
+        <attribute type="AssemblyInformationalVersionAttribute" 	value="${script::information-version(version::parse(version))}" />
+      </attributes>
+    </asminfo>
+
+    <echo message="Task execution finished at : ${sevansoft-buildtime::get-time-formatted()}" />
+  </target>
+
+  <target name="TestBuild" depends="UpdateVersion">
+    <echo message="Task execution started at : ${sevansoft-buildtime::get-time-formatted()}" />
+
+    <property name="sample.file" value="${tests.dir}\Sevansoft.TechnologyUpliftSample.dll" />
+
+    <property name="target.file"    value="${sample.file}" />
+    
+    <delete file="${target.file}" 
+            if="${file::exists(target.file)}" 
+            failonerror="true" 
+            verbose="${verbose}" />
+    
+    <property name="componentcode.dir" value="${build.dir}\Sevansoft.TechnologyUpliftSample" />
+    <vbc
+			target="library"
+			output="${target.file}"
+			optionexplicit="true"
+			optionstrict="true"
+			warnaserror="true"
+      define="CODE_ANALYSIS"
+			rebuild="true"
+			debug="true"
+			verbose="${verbose}">
+      <sources>
+        <include name="${componentcode.dir}\Person.vb" />
+        <include name="${componentcode.dir}\My Project\AssemblyInfo.vb" />
+        <include name="${build.dir}\VersionInfo.vb" />
+      </sources>
+      <references>
+        <include name="System.dll" />
+      </references>
+    </vbc>
+
+    <fail unless="${file::exists(target.file)}" 
+          message="Output file doesn't exist in ${target.file}" />
+
+    <echo message="Task execution finished at : ${sevansoft-buildtime::get-time-formatted()}" />
+  </target>
+
+  <target name="RunTests" depends="TestBuild">
+    <echo message="Task execution started at : ${sevansoft-buildtime::get-time-formatted()}" />
+
+    <property name="target.file" value="${tests.dir}\Sevansoft.TechnologyUpliftSample.Tests.dll" />
+    
+    <delete file="${target.file}" 
+            if="${file::exists(target.file)}" 
+            failonerror="true" 
+            verbose="${verbose}" />
+    
+    <property name="componentcode.dir" value="${build.dir}\Sevansoft.TechnologyUpliftSample.Tests" />
+    <vbc
+			target="library"
+			output="${target.file}"
+			optionexplicit="true"
+			optionstrict="true"
+			warnaserror="true"
+			rebuild="true"
+			debug="${debug}"
+			verbose="${verbose}" >
+      <sources>
+        <include name="${componentcode.dir}\.vb" />
+        <include name="${componentcode.dir}\My Project\AssemblyInfo.vb" />
+        <include name="${build.dir}\VersionInfo.vb" />
+      </sources>
+      <references>
+        <include name="System.dll" />
+        <include name="${reference.dir}\nunit.framework.dll" />
+        <include name="${sample.file}" />
+      </references>
+    </vbc>
+
+    <copy todir="${tests.dir}" 
+          flatten="true" 
+          failonerror="true" 
+          verbose="${verbose}" >
+      <fileset>
+        <include name="${reference.dir}\nunit.framework.dll" />
+      </fileset>
+    </copy>
+
+    <!-- Delegate to the UnitTestAssembly target to exercise the tests within it -->
+    <property name="assembly.to.test"	value="${tests.dir}\Sevansoft.TechnologyUpliftSample.dll" />
+    <property name="assembly.test.fixture"	value="${tests.dir}\Sevansoft.TechnologyUpliftSample.Tests.dll" />
+    <call target="UnitTestAssembly" />
+
+    <echo message="Task execution finished at : ${sevansoft-buildtime::get-time-formatted()}" />
+  </target>
+
+  <target name="ReleaseBuild" depends="RunTests">
+    <echo message="Task execution started at : ${sevansoft-buildtime::get-time-formatted()}" />
+
+    <property name="extension.file" value="${built.dir}\Sevansoft.TechnologyUpliftSample.dll" />
+
+    <property name="target.file" value="${extension.file}" />
+    
+    <delete file="${target.file}" 
+            if="${file::exists(target.file)}" 
+            failonerror="true" 
+            verbose="${verbose}" />
+    <property name="componentcode.dir" value="${build.dir}\Sevansoft.TechnologyUpliftSample" />
+    <vbc
+			target="library"
+			output="${target.file}"
+			optionexplicit="true"
+			optionstrict="true"
+			warnaserror="true"
+			rebuild="true"
+			debug="${debug}"
+			verbose="${verbose}">
+      <sources>
+        <include name="${componentcode.dir}\Person.vb" />
+        <include name="${componentcode.dir}\My Project\AssemblyInfo.vb" />
+        <include name="${build.dir}\VersionInfo.vb" />
+      </sources>
+      <references>
+        <include name="System.dll" />
+      </references>
+    </vbc>
+
+    <fail unless="${file::exists(target.file)}" 
+          message="Output file doesn't exist in ${target.file}" />
+
+    <echo message="Task execution finished at : ${sevansoft-buildtime::get-time-formatted()}" />
+  </target>
+
+  <target name="FinaliseBuild" depends="ReleaseBuild">
+    <echo message="Task execution started at : ${sevansoft-buildtime::get-time-formatted()}" />
+
+    <property name="failure.item"		value="Deploying to release folder" />
+
+    <generatebuildinfo targetfile="${built.dir}\information.xml"
+			                  includestylesheet="true"
+			                  label="${CCNetLabel}"
+			                  productname="${product.name}"
+			                  source="${CCNetSource}"
+			                  versionstring="${version}"
+			                  failonerror="true"
+			                  verbose="${verbose}" />
+
+    <call target="Touch"/>
+
+    <echo message="Task execution finished at : ${sevansoft-buildtime::get-time-formatted()}" />
+  </target>
+
+  <target name="Failure">
+    <echo message="Task execution started at : ${sevansoft-buildtime::get-time-formatted()}" />
+
+    <echo message="Build failure, please check log for details" />
+
+    <echo message="Task execution finished at : ${sevansoft-buildtime::get-time-formatted()}" />
+  </target>
+
+  <target name="Success">
+    <echo message="Task execution started at : ${sevansoft-buildtime::get-time-formatted()}" />
+
+    <echo message="Successful build" />
+
+    <echo message="Task execution finished at : ${sevansoft-buildtime::get-time-formatted()}" />
+  </target>
+
+  <target name="Touch">
+    <echo message="Task execution started at : ${sevansoft-buildtime::get-time-formatted()}" />
+
+    <if test="${CCNetLabel != '0.0.0.0'}">
+      <touch failonerror="true" verbose="${verbose}">
+        <fileset basedir="${build.dir}">
+          <include name="**/*.*" />
+          <exclude name="**/Sevansoft.Extensions.build.*" />
+        </fileset>
+      </touch>
+    </if>
+
+    <echo message="Task execution finished at : ${sevansoft-buildtime::get-time-formatted()}" />
+  </target>
+
+  <target name="UnitTestAssembly">
+    <!-- 
+		Performs the execution of unit tests via nunit-console.exe, 
+		the results of which are output to a file named the same as the assembly being test except with a .xml extension
+		These results are consumed be the cruisecontrol project definition and as such appear on the dashboard
+		-->
+    <echo message="Task execution started at : ${sevansoft-buildtime::get-time-formatted()}" />
+
+    <if test="${not property::exists('assembly.to.test')}">
+      <property name="failure.item"		          value="Unit Testing Assembly" />
+      <fail message="assembly.to.test property not set" />
+    </if>
+
+    <if test="${not property::exists('assembly.test.fixture')}">
+      <property name="failure.item"		          value="Unit Testing Assembly" />
+      <fail message="assembly.test.fixture property not set" />
+    </if>
+
+    <property name="failure.item"		            value="Unit Testing Assembly ${assembly.to.test}" />
+    <property name="test.fixture"               value="${path::get-file-name(assembly.test.fixture)}" />
+
+    <property name="test.fixture.output.file"   value="${path::change-extension(test.fixture, '.xml')}" />
+
+    <sleep milliseconds="1000" 
+           failonerror="true" 
+           verbose="${verbose}" />
+    <!-- Unit tests executed under the context of NCover in order to obtain the coverage results -->
+    <!-- 
+    On a 64-bit machine the NCover.Console.exe needs to have the command СorFlags.exe NCover.Console.exe /32BIT+ run
+    Please note that you’ll need to give the complete path to both the CorFlags.exe as well as NCover.Console.exe.
+    -->
+    <ncover program="${buildtools.dir}\nCover\NCover.Console.exe"
+            commandLineExe="${buildtools.dir}\NUnit\nunit-console-x86.exe"
+            commandLineArgs=" &quot;${assembly.test.fixture}&quot; /xml:&quot;${tests.dir}\${test.fixture.output.file}&quot; /nologo"
+            workingDirectory="${tests.dir}"
+            coverageFile="${tests.dir}\${test.fixture}.Test_coverage.xml"
+            logFile="${tests.dir}\${test.fixture}.ncover.log"
+            failonerror="true"
+            verbose="${verbose}" >
+
+      <assemblies>
+        <include name="${assembly.to.test}" />
+        <exclude name="${assembly.test.fixture}" />
+      </assemblies>
+    </ncover>
+
+    <sleep milliseconds="1000" 
+           failonerror="true" 
+           verbose="${verbose}" />
+
+    <ncoverexplorer program="${buildtools.dir}\nCoverExplorer\ncoverexplorer.console.exe"
+					          projectName="Sevansoft CCNet Plug"
+					          outputDir="${tests.dir}"
+					          satisfactoryCoverage="70"
+					          failMinimum="false"
+					          reportType="ModuleClassSummary"
+					          xmlReportName="coverageReport.xml"
+                    failonerror="true"
+                    verbose="${verbose}" >
+
+      <fileset>
+        <include name="${tests.dir}\*coverage.xml" />
+      </fileset>
+      <exclusions>
+        <exclusion type="Assembly" pattern="*Test" />
+        <exclusion type="Namespace" pattern="*My" />
+        <exclusion type="Namespace" pattern="*My.Resources" />
+        <exclusion type="Namespace" pattern="-" />
+      </exclusions>
+    </ncoverexplorer>
+
+    <sleep milliseconds="1000" 
+           failonerror="true" 
+           verbose="${verbose}" />
+
+    <echo message="Task execution finished at : ${sevansoft-buildtime::get-time-formatted()}" />
+  </target>
+
+  <script language="C#">
+    <code><![CDATA[
+				[Function("information-version")]
+				public static string InformationVersion(Version value)
+				{
+					return value.ToString(2);
+				}
+			]]></code>
+  </script>
+</project>

@@ -1,0 +1,13 @@
+D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample.Tests\obj\Debug\ResolveAssemblyReference.cache
+D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample.Tests\obj\Debug\Resources.resources
+D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample.Tests\obj\Debug\Sevansoft.TechnologyUpliftSample.Tests.vbproj.GenerateResource.Cache
+D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample.Tests\bin\Debug\Sevansoft.TechnologyUpliftSample.Tests.dll
+D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample.Tests\bin\Debug\Sevansoft.TechnologyUpliftSample.Tests.pdb
+D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample.Tests\bin\Debug\Sevansoft.TechnologyUpliftSample.Tests.xml
+D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample.Tests\bin\Debug\nunit.framework.dll
+D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample.Tests\obj\Debug\Sevansoft.TechnologyUpliftSample.Tests.dll
+D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample.Tests\obj\Debug\Sevansoft.TechnologyUpliftSample.Tests.xml
+D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample.Tests\obj\Debug\Sevansoft.TechnologyUpliftSample.Tests.pdb
+D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample.Tests\bin\Debug\Sevansoft.TechnologyUpliftSample.dll
+D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample.Tests\bin\Debug\Sevansoft.TechnologyUpliftSample.pdb
+D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample.Tests\bin\Debug\Sevansoft.TechnologyUpliftSample.xml

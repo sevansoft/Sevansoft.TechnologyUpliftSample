@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Sevansoft.TechnologyUpliftSample", "Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample.vbproj", "{D52ADA64-DB89-4643-A522-AC23EC07D4FE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{31709788-5BAC-4145-92CE-BE9944392FBE}"
+	ProjectSection(SolutionItems) = preProject
+		Sevansoft.TechnologyUpliftSample.build.bat = Sevansoft.TechnologyUpliftSample.build.bat
+		Sevansoft.TechnologyUpliftSample.build.xml = Sevansoft.TechnologyUpliftSample.build.xml
+		VersionInfo.vb = VersionInfo.vb
+	EndProjectSection
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Sevansoft.TechnologyUpliftSample.Tests", "Sevansoft.TechnologyUpliftSample.Tests\Sevansoft.TechnologyUpliftSample.Tests.vbproj", "{F524E80D-0CE9-44CC-91C5-7E37181E72B4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D52ADA64-DB89-4643-A522-AC23EC07D4FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D52ADA64-DB89-4643-A522-AC23EC07D4FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D52ADA64-DB89-4643-A522-AC23EC07D4FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D52ADA64-DB89-4643-A522-AC23EC07D4FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F524E80D-0CE9-44CC-91C5-7E37181E72B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F524E80D-0CE9-44CC-91C5-7E37181E72B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F524E80D-0CE9-44CC-91C5-7E37181E72B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F524E80D-0CE9-44CC-91C5-7E37181E72B4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

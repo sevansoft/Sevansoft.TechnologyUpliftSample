@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href='coverage.xsl' type='text/xsl'?>
+<!-- re-saved from NCover by NCoverExplorer url=http://www.kiwidude.com/blog/ -->
+<coverage>
+  <module name="C:\Users\Steve\AppData\Local\Temp\nunit20\ShadowCopyCache\3832_635203891004433472\Tests_1436796\assembly\dl3\403e9c1e\80bd1427_7be4ce01\Sevansoft.TechnologyUpliftSample.DLL" assembly="Sevansoft.TechnologyUpliftSample">
+    <method name=".ctor" class="Sevansoft.TechnologyUpliftSample.Person">
+      <seqpnt visitcount="2" line="15" column="9" endline="16" endcolumn="48" excluded="false" document="D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample\Person.vb" />
+      <seqpnt visitcount="2" line="17" column="13" endline="17" endcolumn="35" excluded="false" document="D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample\Person.vb" />
+      <seqpnt visitcount="2" line="18" column="13" endline="18" endcolumn="31" excluded="false" document="D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample\Person.vb" />
+      <seqpnt visitcount="2" line="19" column="9" endline="19" endcolumn="16" excluded="false" document="D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample\Person.vb" />
+    </method>
+    <method name=".ctor" class="Sevansoft.TechnologyUpliftSample.Person">
+      <seqpnt visitcount="1" line="11" column="9" endline="11" endcolumn="25" excluded="false" document="D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample\Person.vb" />
+      <seqpnt visitcount="1" line="12" column="13" endline="12" endcolumn="47" excluded="false" document="D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample\Person.vb" />
+      <seqpnt visitcount="1" line="13" column="9" endline="13" endcolumn="16" excluded="false" document="D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample\Person.vb" />
+    </method>
+    <method name="get_Firstname" class="Sevansoft.TechnologyUpliftSample.Person">
+      <seqpnt visitcount="2" line="23" column="13" endline="23" endcolumn="16" excluded="false" document="D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample\Person.vb" />
+      <seqpnt visitcount="2" line="24" column="17" endline="24" endcolumn="34" excluded="false" document="D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample\Person.vb" />
+      <seqpnt visitcount="2" line="25" column="13" endline="25" endcolumn="20" excluded="false" document="D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample\Person.vb" />
+    </method>
+    <method name="get_Surname" class="Sevansoft.TechnologyUpliftSample.Person">
+      <seqpnt visitcount="2" line="30" column="13" endline="30" endcolumn="16" excluded="false" document="D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample\Person.vb" />
+      <seqpnt visitcount="2" line="31" column="17" endline="31" endcolumn="32" excluded="false" document="D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample\Person.vb" />
+      <seqpnt visitcount="2" line="32" column="13" endline="32" endcolumn="20" excluded="false" document="D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample\Person.vb" />
+    </method>
+  </module>
+</coverage>

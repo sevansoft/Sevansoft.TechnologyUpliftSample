@@ -1,0 +1,9 @@
+D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample\bin\Debug\Sevansoft.TechnologyUpliftSample.dll
+D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample\bin\Debug\Sevansoft.TechnologyUpliftSample.pdb
+D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample\bin\Debug\Sevansoft.TechnologyUpliftSample.xml
+D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample\obj\Debug\ResolveAssemblyReference.cache
+D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample\obj\Debug\Resources.resources
+D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample\obj\Debug\Sevansoft.TechnologyUpliftSample.vbproj.GenerateResource.Cache
+D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample\obj\Debug\Sevansoft.TechnologyUpliftSample.dll
+D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample\obj\Debug\Sevansoft.TechnologyUpliftSample.xml
+D:\Sevansoft\Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample\obj\Debug\Sevansoft.TechnologyUpliftSample.pdb
