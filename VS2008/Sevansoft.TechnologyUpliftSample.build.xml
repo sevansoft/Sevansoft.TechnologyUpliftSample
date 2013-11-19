@@ -313,9 +313,9 @@
            verbose="${verbose}" />
 
     <ncoverexplorer program="${buildtools.dir}\nCoverExplorer\ncoverexplorer.console.exe"
-					          projectName="Sevansoft CCNet Plug"
+					          projectName="Sevansoft TechnologyUpliftSample"
 					          outputDir="${tests.dir}"
-					          satisfactoryCoverage="70"
+					          satisfactoryCoverage="100"
 					          failMinimum="false"
 					          reportType="ModuleClassSummary"
 					          xmlReportName="coverageReport.xml"
