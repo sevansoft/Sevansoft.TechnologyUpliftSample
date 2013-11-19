@@ -288,6 +288,12 @@
     <sleep milliseconds="1000" 
            failonerror="true" 
            verbose="${verbose}" />
+
+      <setenv name="COMPLUS_ProfAPI_ProfilerCompatibilitySetting"
+              value="EnableV2Profiler"
+              if="${not environment::variable-exists('COMPLUS_ProfAPI_ProfilerCompatibilitySetting')}"
+              failonerror="true"
+              verbose="${verbose}" />
     <!-- Unit tests executed under the context of NCover in order to obtain the coverage results -->
     <!-- 
     On a 64-bit machine the NCover.Console.exe needs to have the command СorFlags.exe NCover.Console.exe /32BIT+ run
