@@ -11,6 +11,9 @@
 
   <property name="reference.dir" 			    value="${build.dir}\References" />
 
+    <property name="nantcontrib.dir" 			value="${buildtools.dir}\nantcontrib" />
+    <property name="nantcontrib.file"			value="${nantcontrib.dir}\NAnt.Contrib.Tasks.dll" />
+
   <property name="debug"				          value="" overwrite="false" />
 
   <property name="verbose"			          value="" overwrite="false" />
@@ -19,6 +22,8 @@
   
   <property name="nant.onfailure" 		    value="Failure"/>
   <property name="nant.onsuccess" 		    value="Success"/>
+
+  <property name="solution.file"			value="${build.dir}\Sevansoft.TechnologyUpliftSample.sln" />
 
   <property name="nant.settings.currentframework"   value="net-3.5" />
 
@@ -39,7 +44,27 @@
     <echo message="Task execution finished at : ${sevansoft-buildtime::get-time-formatted()}" />
   </target>
 
-  <target name="MakeWriteable">
+    <target name="ValidateTools">
+        <!-- Start by validating that all the required tools are available -->
+        <echo message="Task execution started at : ${sevansoft-buildtime::get-time-formatted()}" />
+
+        <fail if="${not file::exists(nantcontrib.file)}" 	message="${nantcontrib.file} does not exist" />
+
+        <echo message="All Build tools appear to be present" />
+
+        <echo message="Task execution finished at : ${sevansoft-buildtime::get-time-formatted()}" />
+    </target>
+
+    <target name="NantContribTasks" depends="ValidateTools">
+        <!-- load the nant contrib tasks -->
+        <echo message="Task execution started at : ${sevansoft-buildtime::get-time-formatted()}" />
+
+        <loadtasks assembly="${nantcontrib.file}" failonerror="true" verbose="${verbose}" />
+
+        <echo message="Task execution finished at : ${sevansoft-buildtime::get-time-formatted()}" />
+    </target>
+
+    <target name="MakeWriteable" depends="NantContribTasks">
     <echo message="Task execution started at : ${sevansoft-buildtime::get-time-formatted()}" />
 
     <mkdir dir="${built.dir}" 
@@ -107,36 +132,25 @@
   <target name="TestBuild" depends="UpdateVersion">
     <echo message="Task execution started at : ${sevansoft-buildtime::get-time-formatted()}" />
 
-    <property name="sample.file" value="${tests.dir}\Sevansoft.TechnologyUpliftSample.dll" />
-
-    <property name="target.file"    value="${sample.file}" />
+     <property name="target.file"    value="${build.dir}\Sevansoft.TechnologyUpliftSample.Tests\bin\debug\Sevansoft.TechnologyUpliftSample.Tests.dll" />
     
     <delete file="${target.file}" 
             if="${file::exists(target.file)}" 
             failonerror="true" 
             verbose="${verbose}" />
-    
-    <property name="componentcode.dir" value="${build.dir}\Sevansoft.TechnologyUpliftSample" />
-    <vbc
-			target="library"
-			output="${target.file}"
-			optionexplicit="true"
-			optionstrict="true"
-			warnaserror="true"
-      define="CODE_ANALYSIS"
-			rebuild="true"
-			debug="true"
-			verbose="${verbose}">
-      <sources>
-        <include name="${componentcode.dir}\Person.vb" />
-        <include name="${componentcode.dir}\My Project\AssemblyInfo.vb" />
-        <include name="${build.dir}\VersionInfo.vb" />
-      </sources>
-      <references>
-        <include name="System.dll" />
-      </references>
-    </vbc>
 
+        <property name="config.type"		value="Debug" />
+        <property name="debug.type"		  value="full" />
+        <property name="build.config"		value="/property:Configuration=${string::to-lower(config.type)}" />
+
+        <property name="rebuild" 			  value="/t:Rebuild" />
+        <!-- Actually build the solution, this time in debug mode -->
+        <property name="failure.item" value="${solution.file}" />
+        <msbuild project="${failure.item}" failonerror="true" verbose="${verbose}">
+            <arg value="${build.config}" />
+            <arg value="${rebuild}" />
+        </msbuild>
+    
     <fail unless="${file::exists(target.file)}" 
           message="Output file doesn't exist in ${target.file}" />
 
@@ -146,40 +160,13 @@
   <target name="RunTests" depends="TestBuild">
     <echo message="Task execution started at : ${sevansoft-buildtime::get-time-formatted()}" />
 
-    <property name="target.file" value="${tests.dir}\Sevansoft.TechnologyUpliftSample.Tests.dll" />
-    
-    <delete file="${target.file}" 
-            if="${file::exists(target.file)}" 
-            failonerror="true" 
-            verbose="${verbose}" />
-    
-    <property name="componentcode.dir" value="${build.dir}\Sevansoft.TechnologyUpliftSample.Tests" />
-    <vbc
-			target="library"
-			output="${target.file}"
-			optionexplicit="true"
-			optionstrict="true"
-			warnaserror="true"
-			rebuild="true"
-			debug="${debug}"
-			verbose="${verbose}" >
-      <sources>
-        <include name="${componentcode.dir}\.vb" />
-        <include name="${componentcode.dir}\My Project\AssemblyInfo.vb" />
-        <include name="${build.dir}\VersionInfo.vb" />
-      </sources>
-      <references>
-        <include name="System.dll" />
-        <include name="${reference.dir}\nunit.framework.dll" />
-        <include name="${sample.file}" />
-      </references>
-    </vbc>
-
     <copy todir="${tests.dir}" 
           flatten="true" 
           failonerror="true" 
           verbose="${verbose}" >
       <fileset>
+        <include name="${build.dir}\Sevansoft.TechnologyUpliftSample.Tests\bin\debug\Sevansoft.TechnologyUpliftSample.dll" />
+        <include name="${build.dir}\Sevansoft.TechnologyUpliftSample.Tests\bin\debug\Sevansoft.TechnologyUpliftSample.Tests.dll" />
         <include name="${reference.dir}\nunit.framework.dll" />
       </fileset>
     </copy>
@@ -195,33 +182,24 @@
   <target name="ReleaseBuild" depends="RunTests">
     <echo message="Task execution started at : ${sevansoft-buildtime::get-time-formatted()}" />
 
-    <property name="extension.file" value="${built.dir}\Sevansoft.TechnologyUpliftSample.dll" />
+    <property name="target.file" value="${build.dir}\Sevansoft.TechnologyUpliftSample\bin\release\Sevansoft.TechnologyUpliftSample.dll" />
 
-    <property name="target.file" value="${extension.file}" />
-    
     <delete file="${target.file}" 
             if="${file::exists(target.file)}" 
             failonerror="true" 
             verbose="${verbose}" />
-    <property name="componentcode.dir" value="${build.dir}\Sevansoft.TechnologyUpliftSample" />
-    <vbc
-			target="library"
-			output="${target.file}"
-			optionexplicit="true"
-			optionstrict="true"
-			warnaserror="true"
-			rebuild="true"
-			debug="${debug}"
-			verbose="${verbose}">
-      <sources>
-        <include name="${componentcode.dir}\Person.vb" />
-        <include name="${componentcode.dir}\My Project\AssemblyInfo.vb" />
-        <include name="${build.dir}\VersionInfo.vb" />
-      </sources>
-      <references>
-        <include name="System.dll" />
-      </references>
-    </vbc>
+
+        <property name="config.type"		value="Release" />
+        <property name="debug.type"		  value="none" />
+        <property name="build.config"		value="/property:Configuration=${string::to-lower(config.type)}" />
+
+        <property name="rebuild" 			  value="/t:Rebuild" />
+        <!-- Actually build the solution, this time in debug mode -->
+        <property name="failure.item" value="${solution.file}" />
+        <msbuild project="${failure.item}" failonerror="true" verbose="${verbose}">
+            <arg value="${build.config}" />
+            <arg value="${rebuild}" />
+        </msbuild>
 
     <fail unless="${file::exists(target.file)}" 
           message="Output file doesn't exist in ${target.file}" />
@@ -242,7 +220,12 @@
 			                  versionstring="${version}"
 			                  failonerror="true"
 			                  verbose="${verbose}" />
-
+							  
+	<copy file="${build.dir}\Sevansoft.TechnologyUpliftSample\bin\release\Sevansoft.TechnologyUpliftSample.dll" 
+		  todir="${built.dir}" 
+		  failonerror="true"
+		  verbose="${verbose}" />
+							  
     <call target="Touch"/>
 
     <echo message="Task execution finished at : ${sevansoft-buildtime::get-time-formatted()}" />
