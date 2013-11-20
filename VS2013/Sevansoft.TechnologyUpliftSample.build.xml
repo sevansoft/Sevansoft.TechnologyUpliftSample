@@ -300,7 +300,7 @@
     Please note that you’ll need to give the complete path to both the CorFlags.exe as well as NCover.Console.exe.
     -->
     <ncover program="${buildtools.dir}\nCover\NCover.Console.exe"
-            commandLineExe="${buildtools.dir}\NUnit\nunit-console-x86.exe"
+            commandLineExe="${buildtools.dir}\NUnit\nunit-console-x86.net4.0.exe"
             commandLineArgs=" &quot;${assembly.test.fixture}&quot; /xml:&quot;${tests.dir}\${test.fixture.output.file}&quot; /nologo"
             workingDirectory="${tests.dir}"
             coverageFile="${tests.dir}\${test.fixture}.Test_coverage.xml"
