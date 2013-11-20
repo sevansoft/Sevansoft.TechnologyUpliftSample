@@ -1,14 +1,16 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Sevansoft.TechnologyUpliftSample", "Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample.vbproj", "{D52ADA64-DB89-4643-A522-AC23EC07D4FE}"
-EndProject
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{31709788-5BAC-4145-92CE-BE9944392FBE}"
 	ProjectSection(SolutionItems) = preProject
 		Sevansoft.TechnologyUpliftSample.build.bat = Sevansoft.TechnologyUpliftSample.build.bat
 		Sevansoft.TechnologyUpliftSample.build.xml = Sevansoft.TechnologyUpliftSample.build.xml
 		VersionInfo.vb = VersionInfo.vb
 	EndProjectSection
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Sevansoft.TechnologyUpliftSample", "Sevansoft.TechnologyUpliftSample\Sevansoft.TechnologyUpliftSample.vbproj", "{D52ADA64-DB89-4643-A522-AC23EC07D4FE}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Sevansoft.TechnologyUpliftSample.Tests", "Sevansoft.TechnologyUpliftSample.Tests\Sevansoft.TechnologyUpliftSample.Tests.vbproj", "{F524E80D-0CE9-44CC-91C5-7E37181E72B4}"
 EndProject
