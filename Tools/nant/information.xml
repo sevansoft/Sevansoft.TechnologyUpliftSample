@@ -1,0 +1,12 @@
+<?xml-stylesheet href="information.xslt" type="text/xsl"?>
+<buildinfo>
+  <product>
+    <name>Sevansoft Build Tools</name>
+    <time>28/01/2012 09:20:04</time>
+    <version>0.1.0.116</version>
+    <source>http://svn-server/svn/BuildTools/trunk/</source>
+    <label>0.1.0.116</label>
+    <machine>BUILD</machine>
+    <user>CruiseControl Servic</user>
+  </product>
+</buildinfo>

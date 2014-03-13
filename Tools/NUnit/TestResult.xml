@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\Users\Steve\Documents\Visual Studio 2010\Projects\ReflectionWithConvertor\ReflectionWithConvertor\ReflectionWithConvertor.Core.Tests\bin\Debug\ReflectionWithConvertor.Core.Tests.dll" total="6" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2012-09-09" time="16:08:43">
+  <environment nunit-version="2.6.0.12051" clr-version="2.0.50727.5456" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files (x86)\Build Tools\NUnit" machine-name="VS2010" user="Steve" user-domain="VS2010" />
+  <culture-info current-culture="en-GB" current-uiculture="en-US" />
+  <test-suite type="Assembly" name="C:\Users\Steve\Documents\Visual Studio 2010\Projects\ReflectionWithConvertor\ReflectionWithConvertor\ReflectionWithConvertor.Core.Tests\bin\Debug\ReflectionWithConvertor.Core.Tests.dll" executed="True" result="Success" success="True" time="0.125" asserts="0">
+    <results>
+      <test-suite type="Namespace" name="ReflectionWithConvertor" executed="True" result="Success" success="True" time="0.109" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="Core" executed="True" result="Success" success="True" time="0.094" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="Tests" executed="True" result="Success" success="True" time="0.094" asserts="0">
+                <results>
+                  <test-suite type="TestFixture" name="DataFieldInfoAttributeTests" executed="True" result="Success" success="True" time="0.047" asserts="0">
+                    <results>
+                      <test-case name="ReflectionWithConvertor.Core.Tests.DataFieldInfoAttributeTests.ConstructorTest" executed="True" result="Success" success="True" time="0.016" asserts="4" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="UpdateCommandNameAttributeTests" executed="True" result="Success" success="True" time="0.016" asserts="0">
+                    <results>
+                      <test-case name="ReflectionWithConvertor.Core.Tests.UpdateCommandNameAttributeTests.ConstructorTest" executed="True" result="Success" success="True" time="0.000" asserts="2" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="UpdateCommandParmeterInfoAttributeTests" executed="True" result="Success" success="True" time="0.031" asserts="0">
+                    <results>
+                      <test-case name="ReflectionWithConvertor.Core.Tests.UpdateCommandParmeterInfoAttributeTests.Constructor1Test" executed="True" result="Success" success="True" time="0.000" asserts="7" />
+                      <test-case name="ReflectionWithConvertor.Core.Tests.UpdateCommandParmeterInfoAttributeTests.Constructor2Test" executed="True" result="Success" success="True" time="0.000" asserts="21" />
+                      <test-case name="ReflectionWithConvertor.Core.Tests.UpdateCommandParmeterInfoAttributeTests.Constructor3Test" executed="True" result="Success" success="True" time="0.000" asserts="14" />
+                      <test-case name="ReflectionWithConvertor.Core.Tests.UpdateCommandParmeterInfoAttributeTests.Constructor4Test" executed="True" result="Success" success="True" time="0.000" asserts="7" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
