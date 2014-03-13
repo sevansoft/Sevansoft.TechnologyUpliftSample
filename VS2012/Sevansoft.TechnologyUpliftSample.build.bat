@@ -13,5 +13,5 @@ pause
 echo.
 echo Building....
 
-"%BUILD_TOOLS%\nant\nant" -buildfile:Sevansoft.TechnologyUpliftSample.build.xml -D:CCNetLabel=0.0.0.0 -D:CCNetSource="None" -D:verbose=true -D:debug=false FinaliseBuild > Sevansoft.TechnologyUpliftSample.build.log
+"..\tools\nant\nant" -buildfile:Sevansoft.TechnologyUpliftSample.build.xml -D:CCNetLabel=0.0.0.0 -D:CCNetSource="None" -D:verbose=true -D:debug=false FinaliseBuild > Sevansoft.TechnologyUpliftSample.build.log
 start notepad Sevansoft.TechnologyUpliftSample.build.log

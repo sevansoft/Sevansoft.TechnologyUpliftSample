@@ -2,7 +2,7 @@
 <project name="Sevansoft.TechnologyUpliftSample" xmlns="http://nant.sf.net/schemas/nant.xsd">
   <property name="build.dir"			        value="${directory::get-current-directory()}" />
   <property name="built.dir"			        value="${build.dir}\built" />
-  <property name="buildtools.dir" 		    value="${environment::get-variable('BUILD_TOOLS')}" />
+  <property name="buildtools.dir" 		    value="${directory::get-parent-directory(build.dir)}\tools" />
   <property name="tests.dir"			        value="${build.dir}\tests" />
 
   <property name="nunit.dir" 			        value="${buildtools.dir}\NUnit" />
