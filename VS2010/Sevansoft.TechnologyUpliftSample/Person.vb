@@ -7,26 +7,26 @@ Imports System
 Imports System.Diagnostics
 
 Namespace Sevansoft.TechnologyUpliftSample
+    <DebuggerStepThrough()>
     Public Class Person
         Public Sub New()
             Me.New(String.Empty, String.Empty)
         End Sub
 
-        Public Sub New(ByVal firstname As String, _
+        Public Sub New(ByVal firstname As String,
                        ByVal surname As String)
             _firstname = firstname
             _surname = surname
         End Sub
 
-        Public ReadOnly Property Firstname() As String
-            <DebuggerStepThrough()> _
+        Public ReadOnly Property Firstname As String
             Get
                 Return _firstname
             End Get
         End Property
 
-        Public ReadOnly Property Surname() As String
-            <DebuggerStepThrough()> _
+        Public ReadOnly Property Surname As String
+
             Get
                 Return _surname
             End Get
