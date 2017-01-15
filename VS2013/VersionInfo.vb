@@ -17,7 +17,7 @@ Imports System.Reflection
  Assembly: AssemblyFileVersionAttribute("0.0.0.0"),  _
  Assembly: AssemblyCompanyAttribute("Sevansoft"),  _
  Assembly: AssemblyProductAttribute("Sevansoft.Extensions"),  _
- Assembly: AssemblyCopyrightAttribute("Copyright © 2000-2016 Sevansoft"),  _
+ Assembly: AssemblyCopyrightAttribute("Copyright © 2000-2017 Sevansoft"),  _
  Assembly: AssemblyConfigurationAttribute("RELEASE"),  _
  Assembly: AssemblyInformationalVersionAttribute("0.0")> 
 
